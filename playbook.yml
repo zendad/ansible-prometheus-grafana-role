@@ -1,0 +1,14 @@
+---
+- name:  prometheus playbook
+  hosts: prometheus
+  gather_facts: False
+  remote_user: ubuntu
+  become: true
+  become_user: root
+  become_method: sudo
+  roles:
+    - { role: prometheus }
+    - { role: prometheus-alertmanager }
+    - { role: prometheus-node-exporter }
+    - { role: prometheus-exporters-common }
+    - { role: grafana }
